@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeegDee Store — Quality products for everyday living</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+  <div class="announcement">Discover products selected for everyday living.</div>
+  <header id="navbar"></header>
+
+  <main >
+    
+    <section class="hero ">
+      <div class="hero-inner ">
+        <div class="hero-copy  ">
+          <span class="eyebrow">Welcome to BeegDee Store</span>
+          <h1>Quality products for <em>everyday living</em>.</h1>
+          <p>A curated collection of products, thoughtfully chosen and delivered to your door.</p>
+          <div class="hero-cta">
+            <a href="products.html" class="btn btn-primary">Shop now</a>
+            <a href="products.html" class="btn btn-secondary">Explore products</a>
+          </div>
+        </div>
+        <div class="hero-visual" id="hero-visual">
+          <span class="placeholder"></span>
+        </div>
+      </div>
+    </section>
+
+  
+    <div class="container page">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Browse</div>
+          <h2>Shop by category</h2>
+        </div>
+      </div>
+      <div id="home-categories"></div>
+    </div>
+
+    
+    <div class="container page" style="padding-top:0">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Handpicked</div>
+          <h2>Featured picks</h2>
+        </div>
+        <a href="products.html" class="section-link">View all</a>
+      </div>
+      <div id="featured-products">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="promo-banner">
+        <div>
+          <h2>Find something you'll love.</h2>
+          <p>Explore the full collection and find your next favourite.</p>
+        </div>
+        <a href="products.html" class="btn">Explore the collection</a>
+      </div>
+    </div>
+
+    
+    <div class="container section">
+      <div class="section-head text-center" style="justify-content:center">
+        <div>
+          <div class="eyebrow">Why shop with us</div>
+          <h2>Simple, secure, reliable</h2>
+        </div>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon" id="trust-secure"></div>
+          <h3>Secure payments</h3>
+          <p>Your payment details are handled securely by Paystack.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" id="trust-quality"></div>
+          <h3>Quality products</h3>
+          <p>Every item is selected with care for your everyday needs.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" id="trust-easy"></div>
+          <h3>Easy shopping</h3>
+          <p>A simple, fast checkout from cart to confirmation.</p>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon" id="trust-support"></div>
+          <h3>Fast support</h3>
+          <p>We're here to help with your orders and questions.</p>
+        </div>
+      </div>
+    </div>
+
+   
+    <div class="container page" style="padding-top:0">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Fresh in</div>
+          <h2>New arrivals</h2>
+        </div>
+        <a href="products.html" class="section-link">View all</a>
+      </div>
+      <div id="new-arrivals"></div>
+    </div>
+
+    
+    <div class="container page">
+      <div class="newsletter">
+        <h2>Ready to find something you'll love?</h2>
+        <p>Browse the full collection and have it delivered to your door.</p>
+        <a href="products.html" class="btn btn-primary">Shop all products</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/products.js"></script>
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const map = { 'trust-secure': 'card', 'trust-quality': 'star', 'trust-easy': 'truck', 'trust-support': 'headset' };
+      Object.keys(map).forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = icon(map[id]);
+      });
+    });
+  </script>
+</body>
+</html>

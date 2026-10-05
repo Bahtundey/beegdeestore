@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage products — BeegDee Store</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main>
+    <div class="admin-shell">
+      <aside class="admin-sidebar">
+        <div class="admin-title">Store admin</div>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="products.html" class="active">Products</a>
+        <a href="add-product.html">Add product</a>
+        <a href="orders.html">Orders</a>
+        <a href="users.html">Users</a>
+        <a href="../index.html">← Back to store</a>
+      </aside>
+
+      <div class="admin-content">
+        <div class="admin-header">
+          <h1>Products</h1>
+          <a href="add-product.html" class="btn btn-primary">+ Add product</a>
+        </div>
+
+        <div class="table-card">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-table-body">
+              <tr><td colspan="6"><div class="spinner"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 BeegDee Store. All rights reserved.</div>
+  </footer>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin/products.js"></script>
+</body>
+</html>

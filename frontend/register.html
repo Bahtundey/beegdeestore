@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account — BeegDee Store</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main>
+    <div class="container">
+      <div class="card auth-card">
+        <h1>Create your account</h1>
+        <p class="subtitle">Join us to start shopping.</p>
+
+        <div id="form-error" class="alert alert-error" style="display:none;"></div>
+
+        <form id="register-form" novalidate>
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Doe" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-field">
+              <input type="password" id="password" name="password" placeholder="At least 6 characters" required autocomplete="new-password">
+              <button type="button" class="password-toggle" aria-label="Show password"></button>
+            </div>
+            <p class="hint">Minimum 6 characters.</p>
+          </div>
+          <div class="form-group">
+            <label for="confirm">Confirm password</label>
+            <div class="password-field">
+              <input type="password" id="confirm" name="confirm" placeholder="Re-enter your password" required autocomplete="new-password">
+              <button type="button" class="password-toggle" aria-label="Show password"></button>
+            </div>
+          </div>
+          <button type="submit" id="submit-btn" class="btn btn-primary btn-block">Create account</button>
+        </form>
+
+        <p class="alt-action">Already have an account? <a href="login.html">Sign in</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 BeegDee Store. All rights reserved.</div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Registration always creates a normal customer account. No role is sent
+    // (and the backend forces role:"user" regardless).
+    const form = document.getElementById('register-form');
+    const errorEl = document.getElementById('form-error');
+    const submitBtn = document.getElementById('submit-btn');
+
+    initPasswordToggles();
+
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirm = document.getElementById('confirm').value;
+
+      errorEl.style.display = 'none';
+
+      if (password !== confirm) {
+        showError('Passwords do not match.');
+        return;
+      }
+      if (password.length < 6) {
+        showError('Password must be at least 6 characters.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating account…';
+
+      try {
+        await API.post('/users', { name, email, password });
+        showToast('Account created! Please sign in.');
+        window.location.href = 'login.html';
+      } catch (err) {
+        showError(err.message);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create account';
+      }
+    });
+  </script>
+</body>
+</html>

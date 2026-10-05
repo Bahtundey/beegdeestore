@@ -1,0 +1,287 @@
+
+
+.result-card {
+  max-width: 480px;
+  margin: 48px auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 48px 36px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.result-card.result-success {
+  border-top: 4px solid var(--success);
+}
+
+.result-card.result-error {
+  border-top: 4px solid var(--danger);
+}
+
+.result-icon {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-success .result-icon {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.result-error .result-icon {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.result-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.result-card h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.result-card .result-detail {
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.result-card .result-order-total {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.order-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.order-card:hover {
+  box-shadow: var(--shadow);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.order-card-top,
+.order-card-mid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.order-card-top {
+  margin-bottom: 8px;
+}
+
+.order-card-mid {
+  margin-bottom: 14px;
+}
+
+.order-id {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.order-date,
+.order-count {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.order-total {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.order-card-bottom {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+
+
+.order-details-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.od-main {
+  padding: 30px;
+}
+
+.od-side {
+  padding: 26px;
+}
+
+.od-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.od-header h1 {
+  font-size: 1.4rem;
+}
+
+.od-statuses {
+  display: flex;
+  gap: 8px;
+}
+
+.od-items {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.od-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--surface-alt);
+}
+
+.od-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.od-item-image {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-alt);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.od-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.od-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.od-item-name {
+  font-weight: 600;
+}
+
+.od-item-meta {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.od-item-subtotal {
+  font-weight: 700;
+}
+
+.od-totals {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin-top: 6px;
+}
+
+.od-totals .summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.95rem;
+}
+
+.od-totals .summary-row.total {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.od-customer-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+
+
+.badge-paid,
+.badge-delivered {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.badge-pending {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+.badge-failed,
+.badge-cancelled {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.badge-processing {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.badge-shipped {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.badge-refunded {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+@media (max-width: 768px) {
+  .order-details-layout {
+    grid-template-columns: 1fr;
+  }
+}

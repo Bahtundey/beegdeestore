@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop — BeegDee Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main>
+    <div class="container page">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span> / </span><span>Shop</span></nav>
+
+      <div class="page-header">
+        <h1>Shop</h1>
+        <p id="product-count">Loading products…</p>
+      </div>
+
+      <div class="filter-toolbar">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" id="product-search" placeholder="Search products…" aria-label="Search products">
+        </div>
+      </div>
+
+      <div id="category-filters" class="filter-bar"></div>
+
+      <div id="products-list">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer"></footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

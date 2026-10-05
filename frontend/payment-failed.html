@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment failed — BeegDee Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/orders.css">
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main>
+    <div class="container page">
+      <div class="result-card result-error">
+        <div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></div>
+        <h1>Payment could not be completed</h1>
+        <p class="result-detail">Your payment was not completed. No order was created and you were not charged.</p>
+        <div class="result-actions">
+          <a href="checkout.html" class="btn btn-primary">Try again</a>
+          <a href="cart.html" class="btn btn-secondary">Return to cart</a>
+          <a href="products.html" class="btn btn-secondary">Continue shopping</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 BeegDee Store. All rights reserved.</div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "ecommerce-app",
+  "version": "1.0.0",
+  "description": "Simple, realistic e-commerce application (Express + MongoDB + Cloudinary backend, vanilla HTML/CSS/JS frontend)",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --kill-others --names BACKEND,FRONTEND \"npm run server\" \"npm run client\"",
+    "server": "npm --prefix backend run dev",
+    "client": "node serve.js",
+    "install:all": "npm install && npm install --prefix backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

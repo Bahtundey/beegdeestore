@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment — BeegDee Store</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/orders.css">
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main>
+    <div class="container page">
+      <div id="payment-result">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 BeegDee Store. All rights reserved.</div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // The frontend NEVER trusts the redirect alone: it asks the backend to
+    // verify the transaction with Paystack. Success is shown only after the
+    // backend confirms the payment.
+    (async () => {
+      const container = document.getElementById('payment-result');
+      const params = new URLSearchParams(window.location.search);
+      const reference = params.get('reference') || params.get('trxref');
+
+      if (!reference) {
+        container.innerHTML = resultHtml('error', 'No transaction reference found', 'The payment provider did not return a reference.', 'cart.html');
+        return;
+      }
+
+      try {
+        const res = await API.verifyPayment(reference);
+        const order = res.data;
+        container.innerHTML = resultHtml(
+          'success',
+          'Payment successful',
+          'Order #' + escapeHtml(order._id) + ' — total ' + formatCurrency(order.total),
+          null,
+          'order-details.html?id=' + order._id
+        );
+      } catch (err) {
+        container.innerHTML = resultHtml('error', 'Payment could not be confirmed', escapeHtml(err.message), 'cart.html');
+      }
+    })();
+
+    function resultHtml(type, title, detail, retryHref, viewOrderHref) {
+      const ic = type === 'success' ? icon('check') : icon('close');
+      const retryBtn = retryHref ? '<a href="' + retryHref + '" class="btn btn-primary">Try again / Return to cart</a>' : '';
+      const viewBtn = viewOrderHref ? '<a href="' + viewOrderHref + '" class="btn btn-primary">View order</a>' : '';
+      const shopBtn = '<a href="products.html" class="btn btn-secondary">Continue shopping</a>';
+      return (
+        '<div class="result-card result-' + type + '">' +
+        '  <div class="result-icon">' + ic + '</div>' +
+        '  <h1>' + title + '</h1>' +
+        '  <p class="result-detail">' + detail + '</p>' +
+        '  <div class="result-actions">' + viewBtn + retryBtn + shopBtn + '</div>' +
+        '</div>'
+      );
+    }
+  </script>
+</body>
+</html>
