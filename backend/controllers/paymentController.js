@@ -59,7 +59,7 @@ const initializePayment = async (req, res, next) => {
       email,
       amount,
       currency: CURRENCY,
-      callbackUrl: (process.env.FRONTEND_URL || 'http://localhost:5500') + '/payment-success.html',
+      callbackUrl: (process.env.FRONTEND_URL || 'https://beegdeestore-frontend.vercel.app').replace(/\/+$/, '') + '/payment-success.html',
     });
 
     if (!result.status) {

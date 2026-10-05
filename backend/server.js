@@ -16,10 +16,16 @@ const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
-const FRONTEND_URL = process.env.FRONTEND_URL || 'https://beegdeestore-frontend.vercel.app';
-const allowedOrigins = [FRONTEND_URL, FRONTEND_URL.replace('localhost', '127.0.0.1')];
+const FRONTEND_URL = (process.env.FRONTEND_URL || 'https://beegdeestore-frontend.vercel.app').replace(/\/+$/, '');
+const PROD_FRONTEND_URL = 'https://beegdeestore-frontend.vercel.app';
 
-app.use(cors({ origin: allowedOrigins }));
+const allowedOrigins = [FRONTEND_URL, PROD_FRONTEND_URL];
+// local dev: also allow the localhost/127.0.0.1 sibling of FRONTEND_URL
+if (/https?:\/\/localhost(:\d+)?/.test(FRONTEND_URL)) {
+  allowedOrigins.push(FRONTEND_URL.replace('localhost', '127.0.0.1'));
+}
+
+app.use(cors({ origin: [...new Set(allowedOrigins)] }));
 
 app.use(express.json());
 
