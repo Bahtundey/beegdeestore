@@ -1,5 +1,5 @@
 
-const API_BASE_URL = 'http://localhost:5050';
+const API_BASE_URL = 'https://backend-kappa-cyan-95.vercel.app';
 
 
 

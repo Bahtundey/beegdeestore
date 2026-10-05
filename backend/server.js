@@ -16,7 +16,7 @@ const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5500';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'https://beegdeestore-frontend.vercel.app';
 const allowedOrigins = [FRONTEND_URL, FRONTEND_URL.replace('localhost', '127.0.0.1')];
 
 app.use(cors({ origin: allowedOrigins }));
